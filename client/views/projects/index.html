@@ -1,0 +1,61 @@
+<template name="projects">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>
+                Projects 
+                <a href="#" 
+                   class="pull-right js-open-modal" 
+                   data-toggle="modal" 
+                   data-target="#projectModal" 
+                   data-label="Create Project">
+                   Create new
+                </a>
+            </h1>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width: 90%">Name</th>
+                                <th class="text-right actions">Actions</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            {{#if Template.subscriptionsReady}}  
+                                {{#each projects}}
+                                    <tr data-id="{{_id}}">
+                                        <td class="cursor-pointer js-open-modal" 
+                                            data-toggle="modal" 
+                                            data-target="#projectModal" 
+                                            data-label="Edit Project">
+                                            {{name}}
+                                        </td>
+                                            
+                                        <td class="text-right">
+                                            <a class="glyphicon glyphicon-pencil cursor-pointer js-open-modal"
+                                               href="#"
+                                               data-toggle="modal" 
+                                               data-target="#projectModal" 
+                                               data-label="Edit Project">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                            {{/if}}
+                        </tbody>
+                    </table>
+                    
+                    {{#unless Template.subscriptionsReady}}
+                      <p>{{>spinner}}</p>
+                    {{/unless}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    {{>projectModal}}
+</template>

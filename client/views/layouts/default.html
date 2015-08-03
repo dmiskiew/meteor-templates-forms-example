@@ -1,0 +1,12 @@
+<template name="defaultLayout">
+    <div class="wrapper padding">
+        <div class="row">
+            <div class="col-sm-12">
+                {{> yield}}
+                {{#unless isOwner }}
+                    {{> scheduleRequestTimeOffModal}}
+                {{/unless}}
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,26 @@
+<template name="taskByProject">
+    <div class="form-inline form-group js-task-fields" data-index={{index}}>
+        <div class="form-inline">
+            {{> hiddenField nestedFieldOptions 'tasks.$._id' index=index}}
+            
+            <div class="form-group">
+                {{> textField nestedFieldOptions 'tasks.$.name' options=wageTypeOptions skipLabel=true index=index}}
+            </div>
+            
+            <div class="form-group">
+                <div class="select-wrapper">
+                    {{> select nestedFieldOptions 'tasks.$.category' options=categories skipLabel=true index=index }}
+                </div>
+            </div>
+
+            <div class="form-group input-with-unit-wrapper">
+                <div class="dollar-sign with-padding">$</div>
+                {{> textField nestedFieldOptions 'tasks.$.cost' skipLabel=true index=index}}
+            </div>
+            
+            <div class="form-group">
+                <a class="glyphicon glyphicon-minus js-remove-task" href="#"></a>
+            </div>
+        </div>
+    </div>
+</template>

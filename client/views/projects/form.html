@@ -1,0 +1,35 @@
+<template name="projectForm">
+    <div class="modal-body" data-id="{{project._id}}" id="projectForm">
+        {{#modalForm schema=schema action=save data=formData}}
+            <section>
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{> textField field='name'}}
+                        {{> textArea field='description'}}
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <section class="tasks">
+                            <h2>Add Tasks</h2> 
+                      
+                            <div class="tasks-container">
+                                {{#each addIndex formData.tasks}}
+                                    {{> taskByProject object=value index=index}}
+                                {{/each}}
+                            </div>
+                
+                            <div class="form-group">
+                                <a class="js-add-task" style="display: inline;" href="#">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                    <span>Assign another task</span>
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+        {{/modalForm}}
+    </div>
+</template>

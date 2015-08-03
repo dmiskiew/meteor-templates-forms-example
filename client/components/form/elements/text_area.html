@@ -1,0 +1,24 @@
+<!-- Reusable input element -->
+<template name="textArea">
+    <div class="reactive-input-container">
+        <div class="form-group">
+            {{#unless skipLabel}}
+                <label>{{label}}</label>
+            {{/unless}}
+            <textarea class="form-control reactive-element" {{disabled}} name="{{field}}" placeholder="{{instructions}}">{{value}}</textarea>
+        </div>
+
+        {{!-- Hide messages if the surrounding form was successfully submitted --}}
+        {{#unless success}}
+
+            {{!-- If submitted and not success, show error messages --}}
+            {{#if submitted}}
+
+                {{#if errorMessage}}
+                    <div class="alert alert-danger" role="alert">{{errorMessage}}</div>
+                {{/if}}
+            {{/if}}
+
+        {{/unless}}
+  </div>
+</template>

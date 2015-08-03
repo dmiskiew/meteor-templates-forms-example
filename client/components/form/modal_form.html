@@ -1,0 +1,30 @@
+<!-- Reusable form block -->
+<template name="modalForm">
+    <form>
+        {{> UI.contentBlock
+            data=data
+            context=context
+        }}
+
+        <div class="modal-footer">
+            <button type="button" class="btn js-cancel btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+
+            <div class="pull-left">
+                {{#if loading}}
+                    {{> spinner}}
+                {{/if}}
+
+                {{#if invalid}}
+                    <strong>Can't submit!</strong>
+                    There are <span class="badge">{{invalidCount}}</span> invalid fields!
+                {{/if}}
+
+                {{#if failed}}
+                    <strong>Woops!</strong>
+                    There was a problem submitting the form!
+                {{/if}}
+            </div>
+        </div>
+    </form>
+</template>
